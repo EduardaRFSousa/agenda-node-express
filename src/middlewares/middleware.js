@@ -1,5 +1,5 @@
 exports.middlewareGlobal = (req, res, next) => {
-    console.log('Passei no Middleware Global');
+    res.locals.errors = req.flash('errors');
     next();
 };
 
@@ -9,10 +9,10 @@ exports.outroMiddleware = (req, res, next) => {
 }
 
 exports.checkCsrfError = (err, req, res, next) => {
-    if (err && err.code === 'EBADCSRFTOKEN') {
+    if (err) {
         return res.render('404');
     }
-    next(err);
+    next();
 }
 
 exports.csrfMiddleware = (req, res, next) => {

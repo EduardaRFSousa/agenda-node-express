@@ -1,16 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário</title>
-</head>
-<body>
-    <form action="/" method="POST">
-        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-        Nome: <input type="text" name="nome"><br>
-        Sobrenome: <input type="text" name="sobrenome"><br>
-        <button>Enviar</button>
-    </form>
-</body>
-</html>
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-3">
+            <h1 class="text-center">Agenda</h1>
+            <p class="text-center lead">Seus contatos estão abaixo</p>
+
+            <div class="reponsive-table">
+                <table class="table my-3">
+                    <tr>
+                        <td>Eduarda</td>
+                        <td>Rocha</td>
+                        <td>+55 81 99999-9999</td>
+                        <td>eduardarocha@gmail.com</td>
+                    </tr>
+
+                    <tr>
+                        <td>Eduarda</td>
+                        <td>Rocha</td>
+                        <td>+55 81 99999-9999</td>
+                        <td>eduardarocha@gmail.com</td>
+                    </tr>
+
+                    <tr>
+                        <td>Eduarda</td>
+                        <td>Rocha</td>
+                        <td>+55 81 99999-9999</td>
+                        <td>eduardarocha@gmail.com</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+<%- include('includes/footer') %>
