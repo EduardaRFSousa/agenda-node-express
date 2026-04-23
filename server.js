@@ -31,7 +31,7 @@ const sessionOptions = session({
 const path = require('path');
 const routes = require('./routes');
 const crsf = require('csurf');
-const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
+const { middlewareFlashes, checkCsrfError, csrfMiddleware, middleware404 } = require('./src/middlewares/middleware');
 const app = express();
 const PORT = 3000;
 
@@ -52,10 +52,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(crsf());
 
 // Middlewares e rotas
-app.use(middlewareGlobal);
+app.use(middlewareFlashes);
 app.use(checkCsrfError);
 app.use(csrfMiddleware);
 app.use(routes);
+app.use(middleware404);
 
 // Inicia o servidor após a conexão com o MongoDB ser estabelecida
 app.on('Conexão feita', () => {

@@ -7,12 +7,14 @@
 
         <div class="col-lg-8 my-3">
             <h1 class="text-center">Criar conta ou Entrar</h1>
-            <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
+            <p class="text-center lead" style="color: hotpink">Faça login ou crie sua conta abaixo</p>
     
+            <%- include('includes/messages') %>
+
             <div class="row row-cols-1 row-cols-lg-2 g-4">
                 <div class="col-lg">
                     <h4>Faça seu cadastro</h4>
-                    <p>Se você ainda não tem conta, preencha o formulário abaixo:</p>
+                    <p style="color: hotpink">Se você ainda não tem conta, preencha o formulário abaixo:</p>
 
                     <form action="/login/register" method="POST">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
@@ -32,7 +34,7 @@
 
                 <div class="col-lg">
                     <h4>Faça seu Login</h4>
-                    <p>Se você já tem uma conta, faça login abaixo:</p>
+                    <p style="color: hotpink">Se você já tem uma conta, faça login abaixo:</p>
 
                     <form action="/login/login" method="POST">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
