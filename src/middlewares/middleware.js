@@ -20,3 +20,13 @@ exports.csrfMiddleware = (req, res, next) => {
 exports.middleware404 = (req, res, next) => {
     res.status(404).render('404');
 };
+
+exports.loginRequired = (req, res, next) => {
+    if (!req.session.user) {
+        req.flash('errors', 'Você precisa fazer login para acessar essa página.');
+        req.session.save(() => res.redirect('/login/index'));
+        return; 
+    }
+
+    next();
+};
