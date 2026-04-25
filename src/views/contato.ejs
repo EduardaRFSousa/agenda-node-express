@@ -11,7 +11,11 @@
 
             <%- include('includes/messages') %>
 
-            <form action="/contato/register" method="POST">
+            <% if(contato._id) { %>
+            <form action="/contato/edit/<%= contato._id %>" class="form-contato" method="POST">
+            <% } else { %>
+            <form action="/contato/register" class="form-contato" method="POST">
+            <% } %>
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="form-group">
                     <label>Nome</label>
@@ -19,15 +23,15 @@
                 </div>
                 <div class="form-group">
                     <label>Sobrenome</label>
-                    <input type="text" class="form-control" name="lastname">
+                    <input value="<%= contato.lastname || '' %>" type="text" class="form-control" name="lastname">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" name="email">
+                    <input value="<%= contato.email || '' %>" type="email" class="form-control" name="email">
                 </div>
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="tel" class="form-control" name="phonenumber">
+                    <input value="<%= contato.phonenumber || '' %>" type="tel" class="form-control" name="phonenumber">
                 </div>
                 <button type="submit" class="btn btn-primary my-3" style="background-color: hotpink; border: none;">Salvar</button>
             </form>

@@ -11,30 +11,26 @@
 
             <%- include('includes/messages') %>
 
+            <hr class="border border-1 opacity-100">
+
+            <% if(contatos.length > 0) { %>
             <div class="reponsive-table">
                 <table class="table my-3">
-                    <tr>
-                        <td>Eduarda</td>
-                        <td>Rocha</td>
-                        <td>+55 81 99999-9999</td>
-                        <td>eduardarocha@gmail.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Eduarda</td>
-                        <td>Rocha</td>
-                        <td>+55 81 99999-9999</td>
-                        <td>eduardarocha@gmail.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Eduarda</td>
-                        <td>Rocha</td>
-                        <td>+55 81 99999-9999</td>
-                        <td>eduardarocha@gmail.com</td>
-                    </tr>
+                    <% contatos.forEach(contato => { %>
+                        <tr>
+                            <td><%= contato.name %></td>
+                            <td><%= contato.lastname %></td>
+                            <td><%= contato.email %></td>
+                            <td><%= contato.phonenumber %></td>
+                            <td><a class="btn" style="background-color: hotpink" href="/contato/index/<%= contato._id %>">Editar</a></td>
+                            <td><a class="btn" style="background-color: black; color: whitesmoke;" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
+                        </tr>
+                    <% }); %>
                 </table>
             </div>
+            <% } else { %>
+                <h4 class="text-center bold" style="color: hotpink;">Não existem contatos na sua agenda!</h4>
+            <% } %>
 
         </div>
 
